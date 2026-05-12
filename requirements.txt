@@ -19,3 +19,5 @@ python-dotenv==1.0.1
 # --- Utilities ---
 rich==13.7.1
 markdown==3.5.2
+torch
+torchvision
