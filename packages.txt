@@ -1,7 +1,11 @@
+# Essential for compiling C++ based AI libraries
 build-essential
 cmake
-software-properties-common
+
+# EDA Binaries
 kicad
 ngspice
 libngspice0
+
+# Utils
 jq
