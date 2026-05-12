@@ -1,0 +1,7 @@
+build-essential
+cmake
+software-properties-common
+kicad
+ngspice
+libngspice0
+jq
