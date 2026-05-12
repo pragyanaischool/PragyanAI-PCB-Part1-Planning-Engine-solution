@@ -29,10 +29,10 @@ st.markdown("""
 
 # --- Sidebar: System Status ---
 with st.sidebar:
-    st.image("https://via.placeholder.com/150?text=PragyanAI", width=120)
+    st.image("", width=120)
     st.title("Planning Engine")
     st.markdown("---")
-    st.info("LLM: **Llama-3-70b (Groq)**")
+    st.info("LLM: **llama-3.3-70b-versatile (Groq)**")
     st.info("State Machine: **LangGraph**")
     st.info("Embeddings: **HF all-mpnet-base-v2**")
     
@@ -41,7 +41,7 @@ with st.sidebar:
         st.rerun()
 
 # --- Main Interface ---
-st.title("🧠 Element 1: Planning & Strategy")
+st.title(" PragyanAI Element 1: Planning & Strategy")
 st.markdown("Transform natural language PRDs into validated **architecture_plan.json** files.")
 
 col_in, col_out = st.columns([1, 1])
