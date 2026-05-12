@@ -29,7 +29,7 @@ st.markdown("""
 
 # --- Sidebar: System Status ---
 with st.sidebar:
-    st.image("", width=120)
+    st.image("PragyanAI_Transperent.png", width=120)
     st.title("Planning Engine")
     st.markdown("---")
     st.info("LLM: **llama-3.3-70b-versatile (Groq)**")
