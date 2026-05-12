@@ -41,6 +41,7 @@ with st.sidebar:
         st.rerun()
 
 # --- Main Interface ---
+st.image("PragyanAI_Transperent.png")
 st.title(" PragyanAI Element 1: Planning & Strategy")
 st.markdown("Transform natural language PRDs into validated **architecture_plan.json** files.")
 
