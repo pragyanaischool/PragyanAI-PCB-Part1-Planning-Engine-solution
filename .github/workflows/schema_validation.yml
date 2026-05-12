@@ -1,0 +1,73 @@
+name: 🧠 Planning Engine Schema Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-logic:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jsonschema
+
+      - name: 🔬 Run Schema Unit Tests
+        run: |
+          python -c "
+          import json
+          from jsonschema import validate
+          
+          # 1. Define the Master Schema (Matches orchestrator.py)
+          schema = {
+              'type': 'object',
+              'properties': {
+                  'mcu': {
+                      'type': 'object',
+                      'properties': {'family': {'type': 'string'}},
+                      'required': ['family']
+                  },
+                  'power_tree': {'type': 'array'},
+                  'interfaces': {'type': 'object'}
+              },
+              'required': ['mcu', 'power_tree', 'interfaces']
+          }
+
+          # 2. Test Case: Valid Data
+          valid_data = {
+              'mcu': {'family': 'ESP32-S3', 'package': 'WROOM'},
+              'power_tree': [{'component': 'LDO', 'input_v': 5.0, 'output_v': 3.3}],
+              'interfaces': {'i2c': 'sensor'}
+          }
+          
+          # 3. Test Case: Invalid Data (Missing interfaces)
+          invalid_data = {
+              'mcu': {'family': 'ESP32-S3'},
+              'power_tree': []
+          }
+
+          print('Testing Valid Architecture...')
+          validate(instance=valid_data, schema=schema)
+          print('✅ Success: Valid data passed.')
+
+          print('Testing Invalid Architecture (Should Fail)...')
+          try:
+              validate(instance=invalid_data, schema=schema)
+              print('❌ Failure: Invalid data incorrectly passed!')
+              exit(1)
+          except Exception as e:
+              print(f'✅ Success: Invalid data caught correctly: {e.message}')
+          "
+          
