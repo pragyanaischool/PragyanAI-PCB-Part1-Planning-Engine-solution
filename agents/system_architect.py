@@ -16,7 +16,7 @@ class SystemArchitect:
         the LLM to "reason" through power conversion logic and pin assignments.
         """
         self.llm = ChatGroq(
-            model="llama3-70b-8192",
+            model="llama-3.3-70b-versatile",
             temperature=0.1,
             groq_api_key=os.getenv("GROQ_API_KEY")
         )
