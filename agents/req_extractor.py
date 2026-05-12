@@ -15,7 +15,7 @@ class RequirementExtractor:
         Uses a temperature of 0 to ensure deterministic extraction of parts.
         """
         self.llm = ChatGroq(
-            model="llama3-70b-8192",
+            model="llama-3.3-70b-versatile",
             temperature=0, 
             groq_api_key=os.getenv("GROQ_API_KEY")
         )
