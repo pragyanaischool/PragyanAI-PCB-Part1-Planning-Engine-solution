@@ -55,7 +55,7 @@ class PlanningOrchestrator:
     def __init__(self):
         # Initialize Groq Llama-3-70b
         self.llm = ChatGroq(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             temperature=0.1, # Low temperature for high technical precision
             groq_api_key=os.getenv("GROQ_API_KEY")
         )
