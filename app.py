@@ -15,7 +15,7 @@ console = Console()
 # --- Page Configuration ---
 st.set_page_config(
     page_title="PragyanAI | The Brain",
-    page_icon="🧠",
+    page_icon=" ",
     layout="wide"
 )
 
@@ -32,7 +32,7 @@ with st.sidebar:
     st.image("PragyanAI_Transperent.png", width=120)
     st.title("Planning Engine")
     st.markdown("---")
-    st.info("LLM: **llama-3.3-70b-versatile (Groq)**")
+    st.info("LLM: **openai/gpt-oss-120b (Groq)**")
     st.info("State Machine: **LangGraph**")
     st.info("Embeddings: **HF all-mpnet-base-v2**")
     
@@ -48,14 +48,14 @@ st.markdown("Transform natural language PRDs into validated **architecture_plan.
 col_in, col_out = st.columns([1, 1])
 
 with col_in:
-    st.subheader("📥 Input: Product Requirements (PRD)")
+    st.subheader(" Input: Product Requirements (PRD)")
     user_prd = st.text_area(
         "Describe your hardware project in detail:",
         placeholder="e.g., A solar-powered IoT weather station with BME280 sensor, ESP32-S3, and an e-paper display. Must operate at 3.3V.",
         height=300
     )
     
-    generate_btn = st.button("Synthesize Architecture 🚀", type="primary", use_container_width=True)
+    generate_btn = st.button("Synthesize Architecture ", type="primary", use_container_width=True)
 
 # --- Logic Execution ---
 if generate_btn:
@@ -81,7 +81,7 @@ if generate_btn:
 
 # --- Output Section ---
 with col_out:
-    st.subheader("📤 Output: Architecture Plan")
+    st.subheader(" Output: Architecture Plan")
     
     if 'final_plan' in st.session_state:
         # Display the JSON output
@@ -99,7 +99,7 @@ with col_out:
         
         with c1:
             st.download_button(
-                label="📥 Download architecture_plan.json",
+                label=" Download architecture_plan.json",
                 data=json.dumps(st.session_state['final_plan'], indent=4),
                 file_name="architecture_plan.json",
                 mime="application/json",
@@ -108,14 +108,14 @@ with col_out:
         
         with c2:
             # Future Bridge to Element 2 (Implementation Core)
-            if st.button("🚀 Send to Implementation Core", use_container_width=True):
+            if st.button(" Send to Implementation Core", use_container_width=True):
                 st.toast("Hand-off logic initiated...")
     else:
         st.info("Architecture data will appear here after synthesis.")
 
 # --- Footer Logic Visualization ---
 st.divider()
-with st.expander("🔍 Trace: LangGraph State Transitions"):
+with st.expander(" Trace: LangGraph State Transitions"):
     st.markdown("""
     1. **Requirement Extractor (Groq):** Parsed entities from PRD.
     2. **System Architect (Groq):** Mapped entities to Power Tree/MCU.
